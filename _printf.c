@@ -10,7 +10,11 @@
 int _printf(const char * const format, ...)
 {
 	int i, j, p;
-	fspec chartof[] = {{'c', print_char}, {'s', print_str}, {'\0', NULL}};
+	fspec chartof[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'%', print_modulo},
+		{'\0', NULL}};
 	va_list args;
 
 	va_start(args, format);
@@ -27,15 +31,10 @@ int _printf(const char * const format, ...)
 					p += chartof[j].func(args);
 					break;
 				}
-				if (format[i + 1] == '%')
-				{
-					p += _putchar(format[i + 1]);
-					break;
-				}
 				j++;
 			}
-			if (!format[i + 1])
-				break;
+			if (format[i + 1] == '\0')
+				return (-1);
 			if (!chartof[j].c)
 				p += write(1, (void *)(format + i), 2);
 			i++;

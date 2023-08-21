@@ -35,3 +35,18 @@ int print_str(va_list args)
 
 	return (_strlen(str));
 }
+/**
+ * print_modulo - print the % charater if the previous one was %
+ *
+ * @args : list of variable arguments
+ *
+ * Return: Always 1 on success
+ */
+int print_modulo(va_list args)
+{
+	char c = '%';
+
+	(void)args;
+	write(1, &c, 1);
+	return (1);
+}
