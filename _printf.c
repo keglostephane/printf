@@ -34,6 +34,8 @@ int _printf(const char * const format, ...)
 				}
 				j++;
 			}
+			if (!format[i + 1])
+				break;
 			if (!chartof[j].c)
 				p += write(1, (void *)(format + i), 2);
 			i++;
