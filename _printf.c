@@ -14,6 +14,8 @@ int _printf(const char * const format, ...)
 		{'c', print_char},
 		{'s', print_str},
 		{'%', print_modulo},
+		{'d', print_int},
+		{'i', print_int},
 		{'\0', NULL}};
 	va_list args;
 
