@@ -12,7 +12,8 @@ int _printf(const char * const format, ...)
 	int i, j, p;
 	fspec chartof[] = {
 		{'c', print_char}, {'s', print_str}, {'%', print_modulo},
-		{'d', print_int}, {'i', print_int}, {'\0', NULL}};
+		{'d', print_int}, {'i', print_int}, {'b', print_bin},
+		{'\0', NULL}};
 	va_list args;
 
 	va_start(args, format);
