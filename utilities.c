@@ -1,5 +1,5 @@
 #include <unistd.h>
-
+#include <stdlib.h>
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -75,4 +75,21 @@ char *rev_str(char *s)
 		dest[i] = tmp;
 	}
 	return (dest);
+}
+/**
+ * nod_by_base - a function that calculate the number of
+ * digit needed to print the given int in a specific base
+ * @n: unsigned int
+ * @base: unsigned int
+ * Return: int
+ */
+int nod_by_base(unsigned int n, unsigned int base)
+{
+	unsigned int i;
+
+	for (i = 0; n > 0; i++)
+	{
+		n /= base;
+	}
+	return (i);
 }
