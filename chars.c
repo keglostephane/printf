@@ -50,3 +50,26 @@ int print_modulo(va_list args)
 	write(1, &c, 1);
 	return (1);
 }
+
+/**
+ * ignore_space_after_percent - traverse a string until a given position
+ *
+ * @format: string to traverse
+ *
+ * @index: current position in the string
+ *
+ * Return: the position before the first character that is not a space
+ *
+ */
+int ignore_space_after_percent(const char *format, int index)
+{
+	int i = 0;
+
+	if (format)
+	{
+		while (format[index + i] == ' ')
+			i++;
+	}
+
+	return (index + i - 1);
+}

@@ -31,4 +31,5 @@ int print_str(va_list args);
 int print_modulo(va_list args);
 int print_int(va_list args);
 int print_bin(va_list args);
+int ignore_space_after_percent(const char *format, int index);
 #endif

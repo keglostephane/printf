@@ -1,5 +1,6 @@
 #include <limits.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -40,5 +41,20 @@ int main(void)
 	printf("Len:[%d]\n", len2);
 	_printf("Unknown:[%r]\n");
 	printf("Unknown:[%r]\n");
+	len = _printf("%s\n", "");
+	len2 = printf("%s\n", "");
+	printf("len = %d, len2 = %d\n", len, len2);
+	len = _printf("%s\n", NULL);
+	len2 = printf("%s\n", NULL);
+	printf("len = %d, len2 = %d\n", len, len2);
+	len = _printf(NULL);
+	len2 = _printf(NULL);
+	printf("len = %d, len2 = %d\n", len, len2);
+	len = _printf("% s\n", "Hello");
+	len2 = printf("% s\n", "Hello");
+	printf("\nlen = %d, len2 = %d\n", len, len2);
+	len = _printf("% d\n", 8);
+	len2 = printf("% d\n", 8);
+	printf("len = %d, len2 = %d\n", len, len2);
 	return (0);
 }

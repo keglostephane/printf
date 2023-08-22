@@ -11,12 +11,8 @@ int _printf(const char * const format, ...)
 {
 	int i, j, p;
 	fspec chartof[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'%', print_modulo},
-		{'d', print_int},
-		{'i', print_int},
-		{'\0', NULL}};
+		{'c', print_char}, {'s', print_str}, {'%', print_modulo},
+		{'d', print_int}, {'i', print_int}, {'\0', NULL}};
 	va_list args;
 
 	va_start(args, format);
@@ -26,6 +22,9 @@ int _printf(const char * const format, ...)
 		if (format[i] == '%')
 		{
 			j = 0;
+			if (format[i + 1] == ' ')
+				i = ignore_space_after_percent(
+					format + i, i + 1);
 			while (chartof[j].c)
 			{
 				if (format[i + 1] == chartof[j].c)
