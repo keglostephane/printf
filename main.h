@@ -23,6 +23,7 @@ typedef struct fspecifiers fspec;
 int _printf(const char *format, ...);
 int _putchar(char c);
 int _strlen(char *s);
+char *rev_str(char *s);
 char *_memcpy(char *dest, char *src, unsigned int n);
 int print_char(va_list args);
 int print_str(va_list args);
