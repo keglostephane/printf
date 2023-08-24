@@ -17,27 +17,25 @@
  *
  */
 
-char *store_base_reverse(unsigned long int n, int base, int upper,
+char *store_base_reverse(unsigned int n, int base, int upper,
 			 char *buffer)
 {
-	unsigned long int q, i, r;
+	int i, r;
 
-	q = n;
 	i = 0;
-	while (q > 0)
+	while (n > 0)
 	{
-		r = q % base;
+		r = n % base;
 		if (r < 10)
-			buffer[i] = r + '0';
+			buffer[i++] = r + '0';
 		else
 		{
 			if (upper)
-				buffer[i] = r + 55;
+				buffer[i++] = r + 55;
 			else
-				buffer[i] = r + 87;
+				buffer[i++] = r + 87;
 		}
-		q /= base;
-		i++;
+		n /= base;
 	}
 
 	return (buffer);
@@ -55,7 +53,7 @@ char *store_base_reverse(unsigned long int n, int base, int upper,
 int print_bin(va_list args, char *buffer)
 {
 	char *ptr, *rev_ptr;
-	unsigned long int dec;
+	unsigned long dec;
 
 	dec = va_arg(args, unsigned long);
 
