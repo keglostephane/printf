@@ -54,7 +54,7 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 	return (address);
 }
 /**
- * rev_str - function that reverse a string
+ * rev_str - function that reverse a string in place
  * @s : input string
  * Return: pointer to char
  */
