@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * print_char - prints a character
@@ -59,4 +60,31 @@ int print_modulo(va_list args, char *buffer)
 
 	write(1, &c, 1);
 	return (1);
+}
+
+/**
+ * print_rev_str - prints a string in reverse
+ *
+ * @args: list of variable arguments
+ *
+ * @buffer: buffer to store result before printing
+ *
+ * Return: number of characters of the reversed string
+ */
+int print_rev_str(va_list args, char *buffer)
+{
+	char *str, *ptr;
+	(void)buffer;
+
+	str = va_arg(args, char *);
+
+	if (str == NULL)
+		return (-1);
+
+	ptr = malloc(sizeof(char) * _strlen(str));
+
+	if (!ptr)
+		return (-1);
+
+	return (flush_buffer(rev_str(_memcpy(ptr, str, _strlen(str)))));
 }
