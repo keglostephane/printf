@@ -73,18 +73,14 @@ int print_modulo(va_list args, char *buffer)
  */
 int print_rev_str(va_list args, char *buffer)
 {
-	char *str, *ptr;
-	(void)buffer;
+	char *str;
 
 	str = va_arg(args, char *);
 
 	if (str == NULL)
 		return (-1);
 
-	ptr = malloc(sizeof(char) * _strlen(str));
+	_memcpy(buffer, str, _strlen(str));
 
-	if (!ptr)
-		return (-1);
-
-	return (flush_buffer(rev_str(_memcpy(ptr, str, _strlen(str)))));
+	return (flush_buffer(rev_str(buffer)));
 }
