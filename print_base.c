@@ -1,40 +1,69 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
 #include <stdlib.h>
+
 /**
- * print_bin - a function that convert a int to bin
- * @args : argument
- * Return: int number of printed char
+ * store_base_reverse - store a number converted in a base in reverse
+ *
+ * @n: number to convert in base
+ *
+ * @base: the base to convert to
+ *
+ * @upper: flag for printing in upper case for base greater than 10
+ *
+ * @buffer: buffer to store result before printing
+ *
+ * Return: the buffer that contain the number converted in base
+ * stored in reverse
+ *
  */
-int print_bin(va_list args)
+
+char *store_base_reverse(unsigned long int n, int base, int upper,
+			 char *buffer)
 {
-	char *ptr, *rev_ptr;
-	unsigned int i = 0, r = 0, q;
-	int count;
-	unsigned int dec = va_arg(args, unsigned int);
+	unsigned long int q, i, r;
 
-	if (dec == 0)
-		return (_putchar('0'));
-	ptr = malloc(sizeof(char) * (nod_by_base(dec, 2) + 1));
-	if (ptr == NULL)
-		return (-1);
-
-	q = dec;
+	q = n;
+	i = 0;
 	while (q > 0)
 	{
-		r = q % 2;
-		if (r == 0)
-			ptr[i] = '0';
+		r = q % base;
+		if (r < 10)
+			buffer[i] = r + '0';
 		else
-			ptr[i] = '1';
-		q /= 2;
+		{
+			if (upper)
+				buffer[i] = r + 55;
+			else
+				buffer[i] = r + 87;
+		}
+		q /= base;
 		i++;
 	}
-	ptr[i] = '\0';
-	rev_ptr = rev_str(ptr);
-	count = write(1, rev_ptr, _strlen(rev_ptr));
-	free(rev_ptr);
-	free(ptr);
-	return (count);
+
+	return (buffer);
+}
+
+/**
+ * print_bin - a function that convert a int to bin
+ *
+ * @args : argument
+ *
+ * @buffer: buffer to store result before printing
+ *
+ * Return: int number of printed char
+ */
+int print_bin(va_list args, char *buffer)
+{
+	char *ptr, *rev_ptr;
+	unsigned long int dec;
+
+	dec = va_arg(args, unsigned long);
+
+	if (dec < 2)
+		return (_putchar(dec + '0'));
+
+	rev_ptr = store_base_reverse(dec, 2, 0, buffer);
+	ptr = rev_str(rev_ptr);
+
+	return (flush_buffer(ptr));
 }
