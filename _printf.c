@@ -10,31 +10,22 @@
 int _printf(const char * const format, ...)
 {
 	int i, j, p;
+	char buffer[SIZE] = {0};
 	fspec chartof[] = {
 		{'c', print_char}, {'s', print_str}, {'%', print_modulo},
 		{'d', print_int}, {'i', print_int}, {'b', print_bin},
 		{'\0', NULL}};
+	fspec *ptr = chartof;
 	va_list args;
 
 	va_start(args, format);
 	i = 0, p = 0;
-	while (format && format[i] != '\0')
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
-			j = 0;
-			if (format[i + 1] == ' ')
-				i = ignore_space_after_percent(
-					format + i, i + 1);
-			while (chartof[j].c)
-			{
-				if (format[i + 1] == chartof[j].c)
-				{
-					p += chartof[j].func(args);
-					break;
-				}
-				j++;
-			}
+			j = search_spec_to_print(format, i, &p, ptr, args,
+						 buffer);
 			if (format[i + 1] == '\0')
 				return (-1);
 			if (!chartof[j].c)
