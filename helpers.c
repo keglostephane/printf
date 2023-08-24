@@ -19,6 +19,46 @@ int nod_by_base(unsigned int n, unsigned int base)
 }
 
 /**
+ * store_base_reverse - store a number converted in a base in reverse
+ *
+ * @n: number to convert in base
+ *
+ * @base: the base to convert to
+ *
+ * @upper: flag for printing in upper case for base greater than 10
+ *
+ * @buffer: buffer to store result before printing
+ *
+ * Return: the buffer that contain the number converted in base
+ * stored in reverse
+ *
+ */
+
+char *store_base_reverse(unsigned int n, int base, int upper,
+			 char *buffer)
+{
+	int i, r;
+
+	i = 0;
+	while (n > 0)
+	{
+		r = n % base;
+		if (r < 10)
+			buffer[i++] = r + '0';
+		else
+		{
+			if (upper)
+				buffer[i++] = r + 55;
+			else
+				buffer[i++] = r + 87;
+		}
+		n /= base;
+	}
+
+	return (buffer);
+}
+
+/**
  * search_spec_to_print - search a valid specifier to use to print
  *
  * @format: string to search for a valid specifier
