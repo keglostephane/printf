@@ -14,7 +14,8 @@ int _printf(const char * const format, ...)
 	fspec chartof[] = {
 		{'c', print_char}, {'s', print_str}, {'%', print_modulo},
 		{'d', print_int}, {'i', print_int}, {'b', print_bin},
-		{'\0', NULL}};
+		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexa},
+		{'X', print_hexa_up}, {'\0', NULL}};
 	fspec *ptr = chartof;
 	va_list args;
 
