@@ -60,14 +60,15 @@ char *_memcpy(char *dest, char *src, unsigned int n)
  */
 char *rev_str(char *s)
 {
-	int i, j, length;
+	int i, j, len, l;
 	char tmp;
 
 	i = 0;
-	length = _strlen(s);
-	j = length - 1;
+	len = _strlen(s);
+	j = len - 1;
+	l = len % 2 ? len / 2 + 1 : len / 2;
 
-	while (i <= length / 2)
+	while (i < l)
 	{
 		tmp = s[i];
 		s[i] = s[j];
