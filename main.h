@@ -35,7 +35,7 @@ int print_int(va_list args, char *buffer);
 int print_bin(va_list args, char *buffer);
 int search_spec_to_print(const char *format, int i, int *counter,
 			 fspec *chartof, va_list args, char *buffer);
-char *store_base_reverse(unsigned long int n, int base, int upper,
+char *store_base_reverse(unsigned int n, int base, int upper,
 			 char *buffer);
 int flush_buffer(char *buffer);
 
