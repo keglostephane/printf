@@ -5,10 +5,13 @@
  *
  * @args: list of variable arguments
  *
+ * @buffer: buffer to store result before printing
+ *
  * Return: Always 1 in success
  */
-int print_char(va_list args)
+int print_char(va_list args, char *buffer)
 {
+	(void)buffer;
 	_putchar(va_arg(args, int));
 	return (1);
 }
@@ -18,11 +21,14 @@ int print_char(va_list args)
  *
  * @args: list of variable arguments
  *
+ * @buffer: buffer to store result before printing
+ *
  * Return: the number of characters printed
  */
-int print_str(va_list args)
+int print_str(va_list args, char *buffer)
 {
 	char *str = va_arg(args, char *);
+	(void)buffer;
 
 	if (!str)
 	{
@@ -40,36 +46,17 @@ int print_str(va_list args)
  *
  * @args : list of variable arguments
  *
+ * @buffer: buffer to store result before printing
+ *
  * Return: Always 1 on success
  */
-int print_modulo(va_list args)
+int print_modulo(va_list args, char *buffer)
 {
 	char c = '%';
 
 	(void)args;
+	(void)buffer;
+
 	write(1, &c, 1);
 	return (1);
-}
-
-/**
- * ignore_space_after_percent - traverse a string until a given position
- *
- * @format: string to traverse
- *
- * @index: current position in the string
- *
- * Return: the position before the first character that is not a space
- *
- */
-int ignore_space_after_percent(const char *format, int index)
-{
-	int i = 0;
-
-	if (format)
-	{
-		while (format[index + i] == ' ')
-			i++;
-	}
-
-	return (index + i - 1);
 }
