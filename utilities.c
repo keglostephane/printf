@@ -60,36 +60,21 @@ char *_memcpy(char *dest, char *src, unsigned int n)
  */
 char *rev_str(char *s)
 {
-	int i, length;
-	char *dest, tmp;
+	int i, j, length;
+	char tmp;
 
+	i = 0;
 	length = _strlen(s);
-	dest = malloc(sizeof(char) * (length + 1));
-	if (dest == NULL)
-		return (NULL);
-	_memcpy(dest, s, length);
-	for (i = 0; i < length; i++, length--)
-	{
-		tmp = dest[length - 1];
-		dest[length - 1] = dest[i];
-		dest[i] = tmp;
-	}
-	return (dest);
-}
-/**
- * nod_by_base - a function that calculate the number of
- * digit needed to print the given int in a specific base
- * @n: unsigned int
- * @base: unsigned int
- * Return: int
- */
-int nod_by_base(unsigned int n, unsigned int base)
-{
-	unsigned int i;
+	j = length - 1;
 
-	for (i = 0; n > 0; i++)
+	while (i <= length / 2)
 	{
-		n /= base;
+		tmp = s[i];
+		s[i] = s[j];
+		s[j] = tmp;
+
+		i++;
+		j--;
 	}
-	return (i);
+	return (s);
 }
