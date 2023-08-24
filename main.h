@@ -30,6 +30,7 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 char *reverse_str(char *s);
 int print_char(va_list args, char *buffer);
 int print_str(va_list args, char *buffer);
+int print_rev_str(va_list args, char *buffer);
 int print_modulo(va_list args, char *buffer);
 int print_int(va_list args, char *buffer);
 int print_bin(va_list args, char *buffer);
