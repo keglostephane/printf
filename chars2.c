@@ -28,10 +28,10 @@ int print_S(va_list args, char *buffer)
 			if (str[i] < 16)
 			{
 				count += _putchar(48);
-				count += print_hexa_up2(str[i] + '0', buffer);
+				count += print_hexa_up2(str[i], buffer);
 			}
 			else
-				count += print_hexa_up2(str[i] + '0', buffer);
+				count += print_hexa_up2(str[i], buffer);
 		}
 		else
 		{
