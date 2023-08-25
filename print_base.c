@@ -123,7 +123,7 @@ int print_hexa_up(va_list args, char *buffer)
 	if (dec < 10)
 		return (_putchar(dec + '0'));
 	if (dec > 9 && dec < 16)
-		return (_putchar(dec + 87));
+		return (_putchar(dec + 55));
 
 	rev_ptr = store_base_reverse(dec, 16, 1, buffer);
 	ptr = rev_str(rev_ptr);
