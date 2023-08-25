@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stddef.h>
+#include <stdint.h>
+
 /**
  * struct fspecifiers - maps format specifiers to functions
  *
@@ -46,4 +48,5 @@ char *store_base_reverse(unsigned int n, int base, int upper,
 			 char *buffer);
 int flush_buffer(char *buffer);
 int print_rot13(va_list args, char *buffer);
+int print_addr(va_list args, char *buffer);
 #endif
