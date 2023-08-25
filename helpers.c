@@ -34,7 +34,7 @@ int nod_by_base(unsigned int n, unsigned int base)
  *
  */
 
-char *store_base_reverse(unsigned int n, int base, int upper,
+char *store_base_reverse(size_t n, int base, int upper,
 			 char *buffer)
 {
 	int i, r;
