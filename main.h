@@ -43,5 +43,5 @@ int search_spec_to_print(const char *format, int i, int *counter,
 char *store_base_reverse(unsigned int n, int base, int upper,
 			 char *buffer);
 int flush_buffer(char *buffer);
-
+int print_rot13(va_list args, char *buffer);
 #endif
