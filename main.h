@@ -34,6 +34,7 @@ int print_rev_str(va_list args, char *buffer);
 int print_modulo(va_list args, char *buffer);
 int print_int(va_list args, char *buffer);
 int print_bin(va_list args, char *buffer);
+int print_S(va_list args, char *buffer);
 int print_octal(va_list args, char *buffer);
 int print_unsigned(va_list args, char *buffer);
 int print_hexa(va_list args, char *buffer);
