@@ -56,7 +56,10 @@ int print_addr(va_list args, char *buffer)
 	void *ptr = va_arg(args, void *);
 
 	if (!ptr)
-		return (-1);
+	{
+		ptr = "(nil)";
+		return (write(1, ptr, _strlen(ptr)));
+	}
 
 	n = (uintptr_t)(ptr);
 
